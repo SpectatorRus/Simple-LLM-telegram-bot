@@ -9,10 +9,6 @@ from gigachat.models import Chat, Messages, MessagesRole
 
 GIGACHAT_API_KEY = ""
 
-# chat = Chat(messages=[Messages(role=MessagesRole.USER, content="как дела?")])
-# res = connection_to_gigachat.chat(chat)
-# print(res)
-
 # Enable logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
