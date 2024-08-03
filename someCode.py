@@ -6,7 +6,12 @@ from telegram.ext import Application, CommandHandler, ContextTypes, InlineQueryH
 from gigachat import GigaChat
 from gigachat.models import Chat, Messages, MessagesRole
 
-GIGACHAT_API_KEY = ""
+from config import Config, load_config
+
+config: Config = load_config()
+TELEGRAM_API_KEY: str = config.tg_bot.token
+GIGACHAT_API_KEY: str = config.gigachat_bot.token
+
 
 # Enable logging
 logging.basicConfig(
@@ -128,7 +133,7 @@ async def info_about_library(update: Update, context: ContextTypes.DEFAULT_TYPE)
 def main() -> None:
     """Run the bot."""
     # Create the Application and pass it your bot's token.
-    application = Application.builder().token("").build()
+    application = Application.builder().token(TELEGRAM_API_KEY).build()
 
     # on different commands - answer in Telegram
     application.add_handler(CommandHandler("start", start))
